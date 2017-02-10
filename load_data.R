@@ -2,8 +2,8 @@ library(dplyr)
 
 loadData <- function(){
 	file_handle = file("household_power_consumption.txt")
-	read.table(
-		text = grep("^[1,2]/2/2007", readLines(file_handle), value = TRUE),
+	table <- read.table(
+		text = grep("^[1,2,3]{1}/2/2007", readLines(file_handle), value = TRUE),
 		col.names = c(
 			"Date",
 			"Time",
@@ -19,4 +19,6 @@ loadData <- function(){
 		na.strings = "?",
 		header = TRUE
 	)
+	close(file_handle)
+	return(table)
 }
