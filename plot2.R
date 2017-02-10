@@ -4,19 +4,25 @@ data <- loadData()
 
 png(
 	filename="plot2.png",
-	width=480,
+	width=560,
 	height=480,
 	units="px"
 )
 
+datetime <- paste(as.Date(data$Date, "%d/%m/%Y"), data$Time)
+data$Datetime <- as.POSIXct(datetime, tz = "PST")
+
 startDay = as.POSIXct(
-	strftime("2007-02-01 00:00:00")
+	strftime("2007-02-01 00:00:00 PST")
 )
 endDay = as.POSIXct(
-	strftime("2007-02-03 00:00:00")
+	strftime("2007-02-03 00:00:00 PST")
 )
+#startDay = "1/2/2007"
+#endDay = "2/2/2007"
+
 plot(
-	data$Time,
+	data$Datetime,
 	data$Global_active_power,
 	xlim=c(
 		startDay,
