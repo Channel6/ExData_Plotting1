@@ -16,6 +16,7 @@ loadData <- function(){
 			"Sub_metering_3"
 		),
 		sep = ";",
+		na.strings = "?",
 		header = TRUE
 	)
 }
