@@ -10,12 +10,15 @@ png(
 )
 
 datetime <- paste(as.Date(data$Date, "%d/%m/%Y"), data$Time)
-data$Datetime <- as.POSIXct(datetime, tz = "PST")
+data$Datetime <- as.POSIXct(
+	datetime
+	#,tz = "PST"
+)
 
-startDay = as.POSIXct(
+startDay <- as.POSIXct(
 	strftime("2007-02-01 00:00:00 PST")
 )
-endDay = as.POSIXct(
+endDay <- as.POSIXct(
 	strftime("2007-02-03 00:00:00 PST")
 )
 #startDay = "1/2/2007"
